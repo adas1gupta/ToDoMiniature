@@ -1,11 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import './App.css';
-
+import ToDo from "./ToDo";
+import ToDoList from "./ToDoList";
+import { useState } from "react";
 
 const App = () => {
+    const [taskTitle, setTaskTitle] = useState("")
+    const [taskDescription, setTaskDescription] = useState("")
+
     return (
-        <ToDo title="Brush Teeth" description="Get up in the morning, take the toothbrush and toothpaste, and brush teeth for two minutes" />
+        <div>
+            Help
+            <ToDoList>
+            {(taskTitle && taskDescription) ? (
+                <ToDo>
+                    <h2>{taskTitle}</h2>
+                    <p>{taskDescription}</p>
+                </ToDo>
+            ) : <></>}
+            </ToDoList>
+        </div>
+        
     )
 }
 
