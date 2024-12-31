@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import Edit from "./Edit";
+import Delete from "./Delete";
 
-function ToDo ({ taskTitle, taskDescription }) {
+function ToDo ({ taskTitle, taskDescription, taskIndex, handleEdit, handleDelete }) {
     const elRef = useRef(null)
     if (!elRef.current) {
         elRef.current = document.createElement("div") //Don't need to put html (<div>)
@@ -15,11 +17,22 @@ function ToDo ({ taskTitle, taskDescription }) {
     }, [])
 
     return createPortal(
-        <div>
+        (<div>
             <h2>{taskTitle}</h2>
             <p>{taskDescription}</p>
-        </div>, 
-        elRef.current
+            <Edit 
+                index={taskIndex}
+                taskTitle={taskTitle}
+                taskDescription={taskDescription}
+                handleEdit={handleEdit}
+            />
+            <Delete 
+                index={taskIndex}
+                taskTitle={taskTitle}
+                taskDescription={taskDescription}
+                handleDelete={handleDelete}
+            />
+        </div>), elRef.current
     )
 }
 

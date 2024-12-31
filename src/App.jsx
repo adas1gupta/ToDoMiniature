@@ -20,6 +20,18 @@ const App = () => {
         }
     }
 
+    const handleEdit = (index, taskTitle, taskDescription) => {
+        setTasks(tasks.map((task, i) =>
+            i === index
+                ? { ...task, taskTitle, taskDescription }
+                : task
+        ));
+    };
+
+    const handleDelete = (index) => {
+        setTasks(tasks.filter((_, i) => i !== index));
+    };
+
     return (
         <div>
             <h1>To Do</h1>
@@ -34,7 +46,15 @@ const App = () => {
             <ToDoList>
                 {(tasks.length > 0) ? (
                     tasks.map((task, index) => (
-                            <ToDo key={index} taskTitle={task.taskTitle} taskDescription={task.taskDescription} />
+                            <ToDo
+                                key={index} //this is so React can uniquely identify each item in a list
+                                //key is also not accessible within child components
+                                taskIndex={index} //separate index identifier
+                                taskTitle={task.taskTitle}
+                                taskDescription={task.taskDescription}
+                                handleEdit={handleEdit}
+                                handleDelete={handleDelete}
+                            />
                         ))
                     ) : <></>
                 }
