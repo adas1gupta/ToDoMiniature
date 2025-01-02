@@ -1,4 +1,4 @@
-function Delete (index, handleDelete) {
+function Delete ({index, handleDelete}) {
     return (
         <button onClick={ () => handleDelete(index) }>Delete</button>
     )

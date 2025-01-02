@@ -1,0 +1,11 @@
+* {
+	box-sizing: border-box;
+}
+
+.home {
+    background-color: blanchedalmond;
+}
+
+.toDoList {
+    align-items: center;
+}

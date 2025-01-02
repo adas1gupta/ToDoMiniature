@@ -1,6 +1,6 @@
-function Edit(index, taskTitle, taskDescription, handleEdit) {
+function Edit({index, taskTitle, taskDescription, handleEdit}) {
     return (
-        <button onClick={ () => handleEdit(index, taskTitle, taskDescription) }>Edit</button>
+        <button onClick={ () => handleEdit(index) }>Edit</button>
     )
 }
 

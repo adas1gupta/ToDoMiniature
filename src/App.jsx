@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import './App.css';
+import classes from './App.module.css'
 import { useState } from "react";
 import ToDo from "./ToDo";
 import ToDoList from "./ToDoList";
 import InputForm from "./InputForm";
 
+
 const App = () => {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
     const [tasks, setTasks] = useState([]);
+    const [indexToEdit, setIndexToEdit] = useState(null)
 
     //function to add Tasks
     const handleAdd = () => {
@@ -20,20 +22,29 @@ const App = () => {
         }
     }
 
-    const handleEdit = (index, taskTitle, taskDescription) => {
-        setTasks(tasks.map((task, i) =>
-            i === index
-                ? { ...task, taskTitle, taskDescription }
-                : task
-        ));
+    const handleEdit = (index) => {
+        setIndexToEdit(index);
+    };
+
+    const handleEditComplete = () => {
+        setIndexToEdit(null);
     };
 
     const handleDelete = (index) => {
         setTasks(tasks.filter((_, i) => i !== index));
     };
 
+    const updateTask = (index, updatedTitle, updatedDescription) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task, i) =>
+                i === index ? { taskTitle: updatedTitle, taskDescription: updatedDescription } : task
+            )
+        );
+    };
+
+
     return (
-        <div>
+        <div className={classes.home}>
             <h1>To Do</h1>
             <InputForm
                 taskTitle={taskTitle}
@@ -43,18 +54,21 @@ const App = () => {
                 handleAdd={handleAdd}
             />
 
-            <ToDoList>
+            <ToDoList className={classes.toDoList}>
                 {(tasks.length > 0) ? (
                     tasks.map((task, index) => (
-                            <ToDo
-                                key={index} //this is so React can uniquely identify each item in a list
-                                //key is also not accessible within child components
-                                taskIndex={index} //separate index identifier
-                                taskTitle={task.taskTitle}
-                                taskDescription={task.taskDescription}
-                                handleEdit={handleEdit}
-                                handleDelete={handleDelete}
-                            />
+                        <ToDo
+                            key={index} //this is so React can uniquely identify each item in a list
+                            //key is also not accessible within child components
+                            taskIndex={index}
+                            taskTitle={task.taskTitle}
+                            taskDescription={task.taskDescription}
+                            handleEdit={handleEdit}
+                            handleDelete={handleDelete}
+                            indexToEdit={indexToEdit}
+                            setIndexToEdit={setIndexToEdit}
+                            updateTask={updateTask}
+                        />
                         ))
                     ) : <></>
                 }
