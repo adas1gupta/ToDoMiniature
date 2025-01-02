@@ -1,6 +1,6 @@
 function TaskDescription({taskDescription, setTaskDescription}) {
     return (
-        <input
+        <textarea
             type="text"
             value={taskDescription}
             onChange={(e) => setTaskDescription(e.target.value)}

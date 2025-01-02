@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "inputForm blank blank";
+    gap: 20px;
+    background-color: blanchedalmond;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+}
+
+.inputForm {
+    grid-area: inputForm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: brown;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #e6e6e6;
+}
+
+.taskTitle,
+.taskDescription {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: lightcoral;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.toDoItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.toDoItem button {
+    margin: 5px;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.blank {
+    grid-area: blank;
+}

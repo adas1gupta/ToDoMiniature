@@ -3,9 +3,9 @@ import TaskTitle from "./taskTitle";
 
 function InputForm({ taskTitle, taskDescription, setTaskTitle, setTaskDescription, handleAdd }) {
     return (
-        <div id="add">
-            <TaskTitle setTaskTitle={setTaskTitle} taskTitle={taskTitle} />
-            <TaskDescription setTaskDescription={setTaskDescription} taskDescription={taskDescription}/>
+        <div className="inputForm">
+            <TaskTitle setTaskTitle={setTaskTitle} taskTitle={taskTitle} className="taskTitle"/>
+            <TaskDescription setTaskDescription={setTaskDescription} taskDescription={taskDescription} className="taskDescription"/>
             <button onClick={handleAdd}>Add</button>
         </div>
     )

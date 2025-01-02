@@ -46,7 +46,7 @@ function ToDo({
                 <button onClick={() => setIndexToEdit(null)}>Cancel</button>
             </div>
         ) : (
-            <div>
+            <div className="toDoItem">
                 <h2>{taskTitle}</h2>
                 <p>{taskDescription}</p>
                 <Edit index={taskIndex} handleEdit={handleEdit} />

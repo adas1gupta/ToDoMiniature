@@ -1,6 +1,6 @@
 const ToDoList = (props) => {
     return (
-        <div>
+        <div className="toDoList">
             {props.children}
         </div>
     )

@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import classes from './App.module.css'
 import { useState } from "react";
 import ToDo from "./ToDo";
 import ToDoList from "./ToDoList";
@@ -44,8 +43,8 @@ const App = () => {
 
 
     return (
-        <div className={classes.home}>
-            <h1>To Do</h1>
+        <div>
+            <h1 className="title">To Do</h1>
             <InputForm
                 taskTitle={taskTitle}
                 taskDescription={taskDescription}
@@ -54,7 +53,7 @@ const App = () => {
                 handleAdd={handleAdd}
             />
 
-            <ToDoList className={classes.toDoList}>
+            <ToDoList className="toDoList">
                 {(tasks.length > 0) ? (
                     tasks.map((task, index) => (
                         <ToDo
