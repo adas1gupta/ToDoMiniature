@@ -39,7 +39,7 @@ Before running the project, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
+   git clone [<repository_url>](https://github.com/adas1gupta/ToDoMiniature.git)
    cd ToDoMiniature
    ```
 
